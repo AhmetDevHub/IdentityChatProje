@@ -1,0 +1,184 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quixlab - Profil</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/quixlab-master/images/favicon.png">
+    <link href="/quixlab-master/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #635bff;
+            color: white;
+            padding: 20px;
+        }
+
+            .sidebar a {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                margin-bottom: 10px;
+                color: white;
+                text-decoration: none;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 6px;
+            }
+
+                .sidebar a i {
+                    margin-right: 10px;
+                }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .profile-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+            .profile-card img {
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+
+        .message-section {
+            flex: 2 1 600px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .media img {
+            border-radius: 50%;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <a href="/Profile/Index/"><i class="fas fa-home"></i> Profilim</a>           
+            <a href="/Message/CreateMessage/"><i class="fas fa-comment"></i> Yeni Mesaj Oluştur</a>
+            <a href="/Register/CreateUser"><i class="fas fa-user"></i> Yeni Kullanıcı Oluştur</a>
+            <a href="/Message/Inbox/"><i class="fas fa-inbox"></i> Gelen Mesajlar</a>
+            <a href="/Message/SendBox"><i class="fas fa-paper-plane"></i> Giden Mesaj</a>
+            <a href="#"><i class="fas fa-envelope-open-text"></i> Okunan Mesajlar</a>
+            <a href="#"><i class="fas fa-trash"></i> Çöp Kutusu</a>
+            <a href="#"><i class="fas fa-xmark"></i> Çıkış</a>
+        </div>
+
+        <div class="content">
+            <div class="profile-section">
+                <!-- Profil Kartı -->
+                <div class="profile-card">
+                    <div class="text-center">
+                        <img src="@ViewBag.ımg" width="80" height="80" alt="">
+                        <h3 class="mb-0">@ViewBag.name @ViewBag.surname</h3>
+                        <p class="text-muted">@ViewBag.city,TURKIYE</p>
+                        <button class="btn btn-danger px-4 my-2">Takip Et</button>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4>263</h4>
+                            <p class="text-muted">Following</p>
+                        </div>
+                        <div class="col">
+                            <h4>263</h4>
+                            <p class="text-muted">Followers</p>
+                        </div>
+                    </div>
+                    <h4 class="mt-4">Ben Kimim ?</h4>
+                    <p class="text-muted">Merhaba , ben Ahmet Kağan Keskin Hacettepe Üniversitesi Maliye 4.Sınıf ve Anadolu Üniversitesi YBS 1.Sınıf öğrencisiyim </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Mobile:</strong> @ViewBag.phone</li>
+                        <li><strong>Email:</strong> @ViewBag.email</li>
+                    </ul>
+                </div>
+
+                <!-- Mesaj Alanı -->
+                <div class="message-section">
+                    <div class="card">
+                        <form action="#" class="form-profile">
+                            <div class="form-group">
+                                <textarea class="form-control" name="textarea" id="textarea" cols="30" rows="2" placeholder="Yeni bir mesaj gönder"></textarea>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <ul class="mb-0 form-profile__icons">
+                                    <li class="d-inline-block"><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-user"></i></button></li>
+                                    <li class="d-inline-block"><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-paper-plane"></i></button></li>
+                                    <li class="d-inline-block"><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-camera"></i></button></li>
+                                    <li class="d-inline-block"><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-smile"></i></button></li>
+                                </ul>
+                                <button class="btn btn-primary px-3 ml-4">Mesaj Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <div class="media">
+                            <img class="mr-3" src="/quixlab-master/images/avatar/2.jpg" width="50" height="50" alt="User">
+                            <div class="media-body">
+                                <h5>Milan Gbah <small class="text-muted ml-3">about 3 days ago</small></h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diğer mesaj kartları da buraya eklenebilir -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/quixlab-master/plugins/common/common.min.js"></script>
+    <script src="/quixlab-master/js/custom.min.js"></script>
+    <script src="/quixlab-master/js/settings.js"></script>
+    <script src="/quixlab-master/js/gleek.js"></script>
+    <script src="/quixlab-master/js/styleSwitcher.js"></script>
+
+</body>
+</html>

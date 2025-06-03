@@ -1,0 +1,23 @@
+﻿@model List<IdentityChatProje.Entities.Message>
+@{
+    Layout = "~/Views/Shared/_MessageLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered"> 
+    <th>#</th>
+    <th>Alıcı Email</th>
+    <th>Konu</th>
+    <th>Mesajı Aç</th>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ReceiverMessage</td>
+            <td>@item.Subjet</td>
+            <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
+        </tr>
+    }
+   
+</table>

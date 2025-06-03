@@ -1,0 +1,172 @@
+﻿@model IdentityChatProje.Entities.Message
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>Yeni Mesaj Oluştur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Head veya body sonuna ekle -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Varsayalım ki bu ikonlar ve stiller projende yüklü -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f5f6fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #635bff;
+            color: white;
+            padding: 20px;
+        }
+
+            .sidebar h3 {
+                font-size: 16px;
+                margin-bottom: 20px;
+                color: #fff;
+            }
+
+            .sidebar a {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                margin-bottom: 10px;
+                color: white;
+                text-decoration: none;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 6px;
+            }
+
+                .sidebar a i {
+                    margin-right: 10px;
+                }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: auto;
+        }
+
+            .card h4 {
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #635bff;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .btn-secondary {
+            background-color: #444;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="/Profile/Index/"><i class="fas fa-home"></i> Profilim</a>
+            <a href="/Message/CreateMessage/"><i class="fas fa-comment"></i> Yeni Mesaj Oluştur</a>
+            <a href="/Register/CreateUser"><i class="fas fa-user"></i> Yeni Kullanıcı Oluştur</a>
+            <a href="/Message/Inbox"><i class="fas fa-inbox"></i> Gelen Mesajlar</a>
+            <a href="#"><i class="fas fa-paper-plane"></i> Giden Mesaj</a>
+            <a href="#"><i class="fas fa-envelope-open-text"></i> Okunan Mesajlar</a>
+            <a href="#"><i class="fas fa-trash"></i> Çöp Kutusu</a>
+            <a href="#"><i class="fas fa-xmark"></i> Çıkış</a>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="card">
+                <h4> Yeni Mesaj Oluştur</h4>
+                <form method="post">
+                    <div class="form-group">
+                        <input type="text" asp-for="SenderEmail" placeholder="Gönderen" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="ReceiverMessage" placeholder="Alıcı" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Subjet" placeholder="Konu" />
+                    </div>
+                    <div class="form-group">
+                        <textarea asp-for="MessageDetail" placeholder="Mesaj..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button onclick="showAlert()" type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Gönder</button>
+                        <button type="reset" class="btn btn-secondary">İptal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button onclick="showAlert()">Uyarı Göster</button>
+
+    <script>
+        function showAlert() {
+            Swal.fire({
+                title: 'Başarılı!',
+                text: 'İşlem başarıyla tamamlandı.',
+                icon: 'success', // success, error, warning, info, question
+                confirmButtonText: 'Tamam'
+            });
+        }
+    </script>
+
+</body>
+</html>
